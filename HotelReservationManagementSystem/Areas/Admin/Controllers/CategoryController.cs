@@ -1,4 +1,5 @@
 ﻿using HotelReservationManagementSystem.Data;
+using HotelReservationManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,6 +21,26 @@ namespace HotelReservationManagementSystem.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _db.Category.ToListAsync());
+        }
+
+        //GET-Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        //POST-Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Category.Add(category);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
         }
     }
 }
