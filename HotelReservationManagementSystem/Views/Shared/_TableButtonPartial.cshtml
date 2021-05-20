@@ -1,7 +1,7 @@
-﻿@*@model int*@
+﻿@model int
 <td style="width:150px;">
     <div class="btn-group" role="group">
-        <a class="btn btn-primary text-light"><i class="fas fa-edit"></i></a>
+        <a class="btn btn-primary text-light" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
         <a class="btn btn-success text-light"><i class="fas fa-list-ul"></i></a>
         <a class="btn btn-danger text-light"><i class="fas fa-trash-alt"></i></a>
     </div>
