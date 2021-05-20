@@ -1,6 +1,7 @@
-﻿<div class="row">
+﻿@model int
+<div class="row">
     <div class="col-6">
-        <input type="submit" class="btn btn-primary form-control" value="Edit" />
+        <a class="btn btn-primary form-control" asp-action="Edit" asp-route-Id="@Model">Update</a>
     </div>
     <div class="col-6">
         <a class="btn btn-success form-control" asp-action="Index">Back to List</a>
