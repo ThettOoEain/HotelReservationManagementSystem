@@ -87,5 +87,41 @@ namespace HotelReservationManagementSystem.Areas.Admin.Controllers
             }
             return View(category);
         }
+
+        //GET-Delete
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = await _db.Category.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+            
+        }
+
+        //POST-Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirm(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = await _db.Category.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            _db.Category.Remove(category);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }
