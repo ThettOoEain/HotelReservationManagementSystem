@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Category List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-info ">Create New</a>
+        </div>
+    </div>
+    <div>
+        @if (Model.Count() > 0) 
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>@Html.DisplayNameFor(m=>m.Name)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m=>item.Name)</td>
+                        <td>EDIT|DETAIL|DELETE</td>
+                    </tr>
+                }
+            </table> 
+        }
+        else
+        {
+            <p>No Category exit...</p>
+        }
+    </div>
+</div>
+

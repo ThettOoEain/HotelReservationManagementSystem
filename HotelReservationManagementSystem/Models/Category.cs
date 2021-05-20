@@ -13,7 +13,7 @@ namespace HotelReservationManagementSystem.Models
 
         [Display(Name ="Category Name")]
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
 
     }
 }
